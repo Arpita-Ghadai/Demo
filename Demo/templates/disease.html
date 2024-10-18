@@ -1,0 +1,43 @@
+{% extends "index.html" %} {% block title %}
+<title class="text-center">Disease Prediction</title>
+<link rel="stylesheet" href="style.css" />
+{% endblock title %} {% block body %}
+<div class="my-3 mx-3 logo">
+  <h2>Medivise</h2>
+  <img src="/static/OIP.png" alt="" height="30px" width="30px" />
+</div>
+
+<div class="disease-container">
+  <h1>Disease Prediction</h1>
+  <form action="/disease" method="POST" class="disease-form">
+    <div class="disease-group">
+      <label for="symptom1">Symptom 1 (Fever):</label>
+      <input type="number" name="symptom1" min="0" max="1" required />
+    </div>
+    <div class="disease-group">
+      <label for="symptom2">Symptom 2 (Cough):</label>
+      <input type="number" name="symptom2" min="0" max="1" required />
+    </div>
+    <div class="disease-group">
+      <label for="symptom3">Symptom 3 (Fatigue):</label>
+      <input type="number" name="symptom3" min="0" max="1" required />
+    </div>
+    <div class="disease-group">
+      <label for="symptom4">Symptom 4 (Sore Throat):</label>
+      <input type="number" name="symptom4" min="0" max="1" required />
+    </div>
+    <div class="disease-group">
+      <label for="symptom5">Symptom 5 (Body Aches):</label>
+      <input type="number" name="symptom5" min="0" max="1" required />
+    </div>
+    <!-- Add more symptoms as needed -->
+    <button type="submit" class="btn btn-primary">Predict Disease</button>
+  </form>
+  <!-- Show prediction result if available -->
+  {% if prediction_text %}
+  <div class="disease-result">
+    <h2>{{ prediction_text }}</h2>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}
